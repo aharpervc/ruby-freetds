@@ -1,4 +1,4 @@
-FROM ruby
+FROM ruby:2.4.3
 
 ARG freetds_version=1.00.110
 
