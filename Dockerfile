@@ -11,3 +11,9 @@ RUN wget http://www.freetds.org/files/stable/freetds-${freetds_version}.tar.gz &
     make install
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# https://github.com/moby/moby/issues/2259
+# https://nickjanetakis.com/blog/docker-tip-56-volume-mounting-ssh-keys-into-a-docker-container
+COPY entrypoint.sh /bin/entrypoint.sh
+RUN chmod +x /bin/entrypoint.sh
+ENTRYPOINT ["/bin/entrypoint.sh"]
